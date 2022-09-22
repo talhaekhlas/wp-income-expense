@@ -8,12 +8,14 @@
  * Version: 1.0
  * License: GPL2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ * Text Domain: light2-inex
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
+require_once __DIR__.'/vendor/autoload.php';
 /**
  * The main plugin class.
  */
@@ -25,6 +27,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     private function __construct() {
         $this->define_constants();
         register_activation_hook( __FILE__, [$this, 'activate'] );
+        add_action( 'plugin_loaded', [$this, 'init_plugin'] );
     }
 
     /**
@@ -53,8 +56,22 @@ if ( ! defined( 'ABSPATH' ) ) {
         define( 'LIGHT2_ASSETS', LIGHT2_URL . '/assets' );
     }
 
+    /**
+     * Do someting at the time of activation plugin.
+     */
     public function activate() {
-        update_option( 'light2_versiojn', LIGHT2_VERSION );
+        $installed = get_option('light2_install_time', $time);
+        if ( !$installed ) {
+            update_option( 'light2_install_time', time() );
+        }
+        update_option( 'light2_version', LIGHT2_VERSION );
+    }
+
+    /**
+     * Initializes plugin.
+     */
+    public function init_plugin() {
+
     }
  }
 

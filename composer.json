@@ -1,0 +1,20 @@
+{
+    "name": "ekhlas/light2",
+    "description": "income expense plugin for light2",
+    "type": "wordpress-plugin",
+    "license": "GPLv2",
+    "authors": [
+        {
+            "name": "Ekhlas",
+            "email": "ekhlas.cse08@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload":{
+        "psr-4":{
+            "Light2\\":"includes/"
+        },
+        "files":[]
+    }
+}
