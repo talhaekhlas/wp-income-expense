@@ -60,7 +60,7 @@ require_once __DIR__.'/vendor/autoload.php';
      * Do someting at the time of activation plugin.
      */
     public function activate() {
-        $installed = get_option('light2_install_time', $time);
+        $installed = get_option('light2_install_time');
         if ( !$installed ) {
             update_option( 'light2_install_time', time() );
         }
@@ -71,7 +71,11 @@ require_once __DIR__.'/vendor/autoload.php';
      * Initializes plugin.
      */
     public function init_plugin() {
-
+        if ( is_admin() ) {
+            new Light2\Backend();
+        } else {
+            // new Light2\Frontend();
+        }
     }
  }
 
