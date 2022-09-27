@@ -1,6 +1,6 @@
 {
-    "name": "ekhlas/light2",
-    "description": "income expense plugin for light2",
+    "name": "ekhlas/wpcodal",
+    "description": "personal finance plugin for wpcodal",
     "type": "wordpress-plugin",
     "license": "GPLv2",
     "authors": [
@@ -13,7 +13,7 @@
     "require": {},
     "autoload":{
         "psr-4":{
-            "Light2\\":"includes/"
+            "WPCodal\\PF\\":"includes/"
         },
         "files":[]
     }

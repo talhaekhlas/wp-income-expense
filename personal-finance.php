@@ -1,14 +1,14 @@
 <?php
 /**
- * Plugin Name: Light2 Income Expense
- * Description: A Income Expense Plugin for Light2
- * Plugin URI: http://light2.com
+ * Plugin Name: WPCodal Personal Finance
+ * Description: A Personal Finance Plugin for WPCodal
+ * Plugin URI: http://wpcodal.com
  * Author: Talha Ekhlas
- * Author URI: http://light2.com
+ * Author URI: http://wpcodal.com
  * Version: 1.0
  * License: GPL2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain: light2-inex
+ * Text Domain: wpcodal-pf
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -20,7 +20,13 @@ require_once __DIR__.'/vendor/autoload.php';
  * The main plugin class.
  */
 
- final class Light2_Income_Expense {
+ final class Personal_Finance {
+    /**
+     * Plugin version
+     *
+     * @var string
+     */
+    const version = '1.0';
     /**
      * Class constructor. 
      */
@@ -33,7 +39,7 @@ require_once __DIR__.'/vendor/autoload.php';
     /**
      * Initializes a singleton instance.
      * 
-     * @return /Light2_Income_Expense.
+     * @return /Personal_Finance.
      */
     public static function init() {
         static $instance = false;
@@ -49,22 +55,22 @@ require_once __DIR__.'/vendor/autoload.php';
      * @return void
      */
     public function define_constants() {
-        define( 'LIGHT2_VERSION', '1.0' );
-        define( 'LIGHT2_FILE', __FILE__ );
-        define( 'LIGHT2_PATH', __DIR__ );
-        define( 'LIGHT2_URL', plugins_url( '', LIGHT2_FILE ) );
-        define( 'LIGHT2_ASSETS', LIGHT2_URL . '/assets' );
+        define( 'WPCODAL_PF_VERSION', self::version );
+        define( 'WPCODAL_PF_FILE', __FILE__ );
+        define( 'WPCODAL_PF_PATH', __DIR__ );
+        define( 'WPCODAL_PF_URL', plugins_url( '', WPCODAL_PF_FILE ) );
+        define( 'WPCODAL_PF_ASSETS', WPCODAL_PF_URL . '/assets' );
     }
 
     /**
      * Do someting at the time of activation plugin.
      */
     public function activate() {
-        $installed = get_option('light2_install_time');
+        $installed = get_option('wpcodal_pf_install_time');
         if ( !$installed ) {
-            update_option( 'light2_install_time', time() );
+            update_option( 'wpcodal_pf_install_time', time() );
         }
-        update_option( 'light2_version', LIGHT2_VERSION );
+        update_option( 'wpcodal_pf_version', WPCODAL_PF_VERSION );
     }
 
     /**
@@ -72,7 +78,7 @@ require_once __DIR__.'/vendor/autoload.php';
      */
     public function init_plugin() {
         if ( is_admin() ) {
-            new Light2\Backend();
+            // new Light2\Backend();
         } else {
             // new Light2\Frontend();
         }
@@ -85,9 +91,9 @@ require_once __DIR__.'/vendor/autoload.php';
   * @return /Light2_Income_Expense.
   */
 
- function light2_income_expense () {
-    return Light2_Income_Expense::init();
+ function personal_finance () {
+    return Personal_Finance::init();
  }
 
  //kick-off the plugin.
- light2_income_expense();
+ personal_finance();

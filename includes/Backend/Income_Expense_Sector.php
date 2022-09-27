@@ -4,7 +4,7 @@ namespace Light2\Backend;
 /**
  * Income class handler.
  */
-class Income {
+class Income_Expense_Sector {
     
     public function plugin_page() {
         $action = isset( $_GET['action'] ) ? $_GET['action'] : '';

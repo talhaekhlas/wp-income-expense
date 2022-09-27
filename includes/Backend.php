@@ -17,7 +17,7 @@ class Backend {
      * @return void
      */
     public function dispatch_actions() {
-        $income = new Backend\Income();
+        $income = new Backend\Income_Expense_Sector();
 
         add_action( 'admin_init', [ $income, 'form_handler' ] );
     }
