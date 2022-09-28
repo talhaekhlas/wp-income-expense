@@ -5,7 +5,70 @@ namespace WPCodal\PF\Admin;
  * Income class handler.
  */
 class Income_Expense_Sector {
-    
+   
+    /**
+     * Income expense page handler.
+     *
+     * @return void
+     */
+    public function income_expense_page($page) {
+        $action = isset( $_GET['action'] ) ? $_GET['action'] : 'list';
+
+        switch ( $action ) {
+            case 'new':
+                $template = __DIR__ . '/views/income-expense-sector/create.php';
+                break;
+
+            case 'edit':
+                $template = __DIR__ . '/views/income-expense-sector/edit.php';
+                break;
+
+            case 'view':
+                $template = __DIR__ . '/views/income-expense-sector/view.php';
+                break;
+
+            default:
+                $template = __DIR__ . '/views/income-expense-sector/list.php';
+                break;
+        }
+
+        if ( file_exists( $template ) ) {
+            include $template;
+        }
+    }
+
+    /**
+     * Expense page handler.
+     *
+     * @return void
+     */
+    public function expense_page() {
+        $action = isset( $_GET['action'] ) ? $_GET['action'] : 'list';
+
+        switch ( $action ) {
+            case 'new':
+                $template = __DIR__ . '/views/expense-sector/create.php';
+                break;
+
+            case 'edit':
+                $template = __DIR__ . '/views/expense-sector/edit.php';
+                break;
+
+            case 'view':
+                $template = __DIR__ . '/views/expense-sector/view.php';
+                break;
+
+            default:
+                $template = __DIR__ . '/views/expense-sector/list.php';
+                break;
+        }
+
+        if ( file_exists( $template ) ) {
+            include $template;
+        }
+    }
+
+
     public function plugin_page() {
         $action = isset( $_GET['action'] ) ? $_GET['action'] : '';
         if ( $action === 'new' ) {

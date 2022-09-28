@@ -13,15 +13,29 @@ class Menu {
      * Add admin menu.
      */
     public function admin_menu() {
-        // $capability = 'manage-options';
-        // $parent_slug = 'wpcodal-pf';
-        add_menu_page( __( 'Personal Finance', 'wpcodal-pf' ), __( 'Personal Finance', 'wpcodal-pf' ), 'manage_options', 'wpcodal-pf', [ $this, 'plugin_page' ], 'dashicons-money-alt' );
-        
-        // add_menu_page( __( 'Personal Finance', 'light2-inex' ), __( 'Income Expense', 'light2-inex' ), 'manage_options', $parent_slug, [ $this, 'income' ], 'dashicons-money-alt' );
-        // add_submenu_page( $parent_slug, __( 'Income', 'light2-inex' ), __( 'Income', 'light2-inex1' ), 'manage_options', $parent_slug, [$this, 'income'] );
-        // add_submenu_page( $parent_slug, __( 'Expense', 'light2-inex' ), __( 'Expense', 'light2-inex2' ), 'manage_options', 'light2-ex', [$this, 'expense'] );
+        $parent_slug = 'income_sector';
+        $capability = 'manage_options';
+
+        add_menu_page( __( 'Personal Finance', 'wpcodal-pf' ), __( 'Personal Finance', 'wpcodal-pf' ), $capability, $parent_slug, [ $this, 'income_sector' ], 'dashicons-money-alt' );
+        add_submenu_page( $parent_slug, __( 'Income Sector', 'wpcodal-pf' ), __( 'Income Sector', 'wpcodal-pf' ), $capability, $parent_slug, [ $this, 'income_sector' ] );
+        add_submenu_page( $parent_slug, __( 'Expense Sector', 'wpcodal-pf' ), __( 'Expense Sector', 'wpcodal-pf' ), $capability, 'expense_sector', [ $this, 'expense_sector' ] );
         
     }
+
+    /**
+     * Income sector.
+     */
+    public function income_sector() {
+        (new Income_Expense_Sector())->income_expense_page('Income');
+    }
+
+    /**
+     * Expense sector.
+     */
+    public function expense_sector() {
+        (new Income_Expense_Sector())->income_expense_page('Expense');
+    }
+
 
     /**
      * Plugin page.
