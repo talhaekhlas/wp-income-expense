@@ -66,11 +66,8 @@ require_once __DIR__.'/vendor/autoload.php';
      * Do someting at the time of activation plugin.
      */
     public function activate() {
-        $installed = get_option('wpcodal_pf_install_time');
-        if ( !$installed ) {
-            update_option( 'wpcodal_pf_install_time', time() );
-        }
-        update_option( 'wpcodal_pf_version', WPCODAL_PF_VERSION );
+        $installer = new WPCodal\PF\Installer();
+        $installer->run();
     }
 
     /**
