@@ -1,37 +1,21 @@
 <div class="wrap">
-    <h1><?php _e( 'New Income', 'light2-inex' ); ?></h1>
-
-    <form action="" method="post">
-        <table class="form-table">
-            <tbody>
-                <tr>
-                    <th scope="row">
-                        <label for="name"><?php _e( 'Name', 'light2-inex' ); ?></label>
-                    </th>
-                    <td>
-                        <input type="text" name="name" id="name" class="regular-text" value="">
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">
-                        <label for="address"><?php _e( 'Address', 'light2-inex' ); ?></label>
-                    </th>
-                    <td>
-                        <textarea class="regular-text" name="address" id="address"></textarea>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">
-                        <label for="phone"><?php _e( 'Phone', 'light2-inex' ); ?></label>
-                    </th>
-                    <td>
-                        <input type="text" name="phone" id="phone" class="regular-text" value="">
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-
-        <?php wp_nonce_field( 'new-income' ); ?>
-        <?php submit_button( __( 'Add Income', 'light2-inex' ), 'primary', 'submit_income' ); ?>
-    </form>
+    <?php 
+        $page_title        = $url == 'income_sector' ? 'Income Sector Creation Form' : 'Expense Sector Creation Form';
+        $sector_name_label = $url == 'income_sector' ? 'Income Sector Name' : 'Expense Sector Name';
+        $button_name       = $url == 'income_sector' ? 'Add Income Sector' : 'Add Expense Sector';
+        $type              = $url == 'income_sector' ? 1 : 2;
+    ?>
+    
+    <div class="form-position">
+        <form action="" method="post">   
+            <label for="name"><h2><?php _e( $sector_name_label, 'wpcodal-pf' ); ?></h2></label>
+            <input type="text" name="name" id="name" class="regular-text" value="">
+            <input type="hidden" name="type" id="name" class="regular-text" value="<?php echo $type; ?>">
+            <?php 
+                wp_nonce_field( 'new-income-expense-sector' ); 
+                submit_button( __( $button_name, 'wpcodal-pf' ), 'primary', 'submit_income_expense_sector' );
+            ?>
+        </form>
+    </div>
+    
 </div>

@@ -7,7 +7,7 @@ namespace WPCodal\PF;
  */
 class Admin {
     public function __construct() {
-        // $this->dispatch_actions();
+        $this->dispatch_actions();
         new Admin\Menu();
     }
 
@@ -17,8 +17,8 @@ class Admin {
      * @return void
      */
     public function dispatch_actions() {
-        $income = new Admin\Income_Expense_Sector();
+        $income_expense_sector = new Admin\Income_Expense_Sector();
 
-        add_action( 'admin_init', [ $income, 'form_handler' ] );
+        add_action( 'admin_init', [ $income_expense_sector, 'form_handler' ] );
     }
 }

@@ -1,0 +1,13 @@
+.income-expense-sector-table{
+    border-collapse: collapse;
+    background: rgb(212, 209, 209);
+}
+.income-expense-sector-list-title{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.form-position{
+    margin: auto;
+    width: 33%;
+}

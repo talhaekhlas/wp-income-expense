@@ -13,6 +13,7 @@ class Income_Expense_Sector {
      */
     public function income_expense_page($page) {
         $action = isset( $_GET['action'] ) ? $_GET['action'] : 'list';
+        $url    = isset( $_GET['page'] ) ? $_GET['page'] : 'income_sector';
 
         switch ( $action ) {
             case 'new':
@@ -88,11 +89,11 @@ class Income_Expense_Sector {
      * @return void
      */
     public function form_handler() {
-        if ( ! isset( $_POST['submit_income'] ) ) {
+        if ( ! isset( $_POST['submit_income_expense_sector'] ) ) {
             return;
         }
 
-        if ( ! wp_verify_nonce( $_POST['_wpnonce'], 'new-income' ) ) {
+        if ( ! wp_verify_nonce( $_POST['_wpnonce'], 'new-income-expense-sector' ) ) {
             wp_die( 'Are you cheating?' );
         }
 
@@ -100,7 +101,8 @@ class Income_Expense_Sector {
             wp_die( 'Are you cheating?' );
         }
 
-        var_dump( $_POST );
+        echo '<pre>';
+        print_r( $_POST );
         exit;
     }
 }

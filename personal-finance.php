@@ -77,6 +77,7 @@ require_once __DIR__.'/vendor/autoload.php';
      * Initializes plugin.
      */
     public function init_plugin() {
+        new WPCodal\PF\Assets();
         if ( is_admin() ) {
             new WPCodal\PF\Admin();
         } else {
