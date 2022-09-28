@@ -1,14 +1,14 @@
 <?php
-namespace Light2;
+namespace WPCodal\PF;
 
 
 /**
  * Menu class handler.
  */
-class Backend {
+class Admin {
     public function __construct() {
-        $this->dispatch_actions();
-        new Backend\Menu();
+        // $this->dispatch_actions();
+        new Admin\Menu();
     }
 
     /**
@@ -17,7 +17,7 @@ class Backend {
      * @return void
      */
     public function dispatch_actions() {
-        $income = new Backend\Income_Expense_Sector();
+        $income = new Admin\Income_Expense_Sector();
 
         add_action( 'admin_init', [ $income, 'form_handler' ] );
     }

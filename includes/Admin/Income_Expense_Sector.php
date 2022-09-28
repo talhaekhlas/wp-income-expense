@@ -1,5 +1,5 @@
 <?php
-namespace Light2\Backend;
+namespace WPCodal\PF\Admin;
 
 /**
  * Income class handler.

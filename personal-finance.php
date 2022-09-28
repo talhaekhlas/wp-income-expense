@@ -78,7 +78,7 @@ require_once __DIR__.'/vendor/autoload.php';
      */
     public function init_plugin() {
         if ( is_admin() ) {
-            // new Light2\Backend();
+            new WPCodal\PF\Admin();
         } else {
             // new Light2\Frontend();
         }
